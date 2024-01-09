@@ -83,7 +83,7 @@
       "displayName": "Git Repo URL",
       "description": "The URL to the customized project copy of the original common angular scaffold project https://github.com/bcgov/angular-scaffold.",
       "required": true,
-      "value": "https://github.com/bcgov/eagle-public"
+      "value": "https://github.com/kevindesao/eagle-public"
     },
     {
       "name": "GIT_REPO_BRANCH",
