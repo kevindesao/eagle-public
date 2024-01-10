@@ -1,6 +1,6 @@
 {
   "kind": "Template",
-  "apiVersion": "v1",
+  "apiVersion": "template.openshift.io/v1",
   "metadata": {
     "name": "${NAME}",
     "creationTimestamp": null
@@ -8,19 +8,19 @@
   "objects": [
     {
       "kind": "ImageStream",
-      "apiVersion": "v1",
+      "apiVersion": "image.openshift.io/v1",
       "metadata": {
         "name": "${NAME}"
       }
     },
     {
       "kind": "BuildConfig",
-      "apiVersion": "v1",
+      "apiVersion": "build.openshift.io/v1",
       "metadata": {
         "name": "${NAME}",
         "creationTimestamp": null,
         "labels": {
-          "app": "${GROUP_NAME}"
+          "app": "${NAME}"
         }
       },
       "spec": {
@@ -34,11 +34,6 @@
           "contextDir": "openshift/templates/nginx-runtime/"
         },
         "strategy": {
-          "dockerStrategy": {
-            "pullSecret": {
-              "name": "artifactory-pull-secret"
-            }
-          },
           "type": "Docker"
         },
         "triggers": [
@@ -72,18 +67,11 @@
       "value": "eagle-public-nginx-runtime"
     },
     {
-      "name": "GROUP_NAME",
-      "displayName": "Group Name",
-      "description": "The name to group all of the frontend objects defined in this template.",
-      "required": true,
-      "value": "eagle-epic"
-    },
-    {
       "name": "GIT_REPO_URL",
       "displayName": "Git Repo URL",
       "description": "The URL to the customized project copy of the original common angular scaffold project https://github.com/bcgov/angular-scaffold.",
       "required": true,
-      "value": "https://github.com/kevindesao/eagle-public"
+      "value": "https://github.com/bcgov/eagle-public"
     },
     {
       "name": "GIT_REPO_BRANCH",
